@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1xdlcutpppqr"]
+[gd_scene load_steps=4 format=3 uid="uid://d1xdlcutpppqr"]
 
 [ext_resource type="Script" path="res://character/guddu/guddu.gd" id="1_3d4tn"]
 [ext_resource type="Texture2D" uid="uid://csspsayiuiq7u" path="res://character/guddu/guddu.png" id="2_fyi7x"]
 
-[node name="Guddu" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1usl"]
+radius = 16.0
+
+[node name="Guddu" type="CharacterBody2D"]
 script = ExtResource("1_3d4tn")
+max_speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_fyi7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a1usl")

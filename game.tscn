@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://c0xl6s3lxv8l6"]
+[gd_scene load_steps=2 format=3 uid="uid://c0xl6s3lxv8l6"]
+
+[ext_resource type="PackedScene" uid="uid://bgyogislj07j3" path="res://map/map.tscn" id="1_06pht"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_06pht")]
