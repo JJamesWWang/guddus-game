@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1xdlcutpppqr"]
+[gd_scene load_steps=3 format=3 uid="uid://d1xdlcutpppqr"]
 
+[ext_resource type="Script" path="res://guddu/guddu.gd" id="1_3d4tn"]
 [ext_resource type="Texture2D" uid="uid://bucnf6rnk3n" path="res://icon.svg" id="1_octgu"]
 
 [node name="Guddu" type="Node2D"]
+script = ExtResource("1_3d4tn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_octgu")
