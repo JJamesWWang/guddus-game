@@ -9,7 +9,6 @@
 script = ExtResource("1_ks10s")
 
 [node name="Map" parent="." instance=ExtResource("2_2dxsd")]
-position = Vector2(160, 120)
 
 [node name="Guddu" parent="." instance=ExtResource("3_3vve1")]
 position = Vector2(80, 120)
@@ -23,5 +22,4 @@ one_shot = true
 [node name="CloneSpawnPoint" type="Node2D" parent="."]
 position = Vector2(240, 120)
 
-[connection signal="fired" from="Guddu" to="." method="_on_guddu_fired"]
 [connection signal="hit" from="Guddu" to="." method="_on_guddu_hit"]

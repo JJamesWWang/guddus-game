@@ -9,36 +9,24 @@ var score = 0
 
 func _ready():
 	input_recorder.start()
-	spawn_clone()
+	spawn_clones()
 
 
 func _process(_delta):
-	pass
+	if get_tree().get_nodes_in_group("clone").size() == 0:
+		spawn_clones()
 
 
-func spawn_clone():
-	var recorded_input = input_recorder.record()
-	var clone = Clone.create(recorded_input, clone_spawn_point.global_position)
-	clone.hit.connect(_on_clone_hit)
+func spawn_clones():
+	input_recorder.record()
+	for history in input_recorder.all_input_history:
+		spawn_clone(history)
+
+
+func spawn_clone(history):
+	var clone = Clone.create(history, clone_spawn_point.global_position)
 	add_child(clone)
 
 
 func _on_guddu_hit():
 	is_over = true
-
-
-func _on_guddu_fired():
-	pass
-
-
-func _on_clone_hit(recorded_input):
-	var input_copy = PackedByteArray(recorded_input)
-	spawn_clone()
-	await get_tree().create_timer(3).timeout
-	# respawn_clone(input_copy)
-
-
-func respawn_clone(recorded_input):
-	var clone = Clone.create(recorded_input, clone_spawn_point.global_position)
-	clone.hit.connect(_on_clone_hit)
-	add_child(clone)
