@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnt3c6fyk5gx4"]
-
-[ext_resource type="Texture2D" uid="uid://scke264c6dg1" path="res://bullet/bullet_cyan.png" id="1_gdqp2"]
-
-[node name="Bullet" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gdqp2")

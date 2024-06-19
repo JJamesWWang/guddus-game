@@ -5,11 +5,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kthu6"]
 size = Vector2(20, 480)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hg0"]
-size = Vector2(2, 480)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoyyh"]
 size = Vector2(640, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hg0"]
+size = Vector2(2, 480)
 
 [node name="Map" type="Node2D"]
 position = Vector2(320, 240)
@@ -27,9 +27,6 @@ shape = SubResource("RectangleShape2D_kthu6")
 position = Vector2(330, 0)
 shape = SubResource("RectangleShape2D_kthu6")
 
-[node name="Mid" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_n5hg0")
-
 [node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -250)
 shape = SubResource("RectangleShape2D_aoyyh")
@@ -37,3 +34,9 @@ shape = SubResource("RectangleShape2D_aoyyh")
 [node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 250)
 shape = SubResource("RectangleShape2D_aoyyh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 8
+
+[node name="Mid" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_n5hg0")

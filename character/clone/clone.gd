@@ -3,6 +3,7 @@ extends CharacterBody2D
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 
 @export var max_speed = 200
+@export var team = Team.ENEMY
 
 
 func _init(recorded_input: PackedByteArray):

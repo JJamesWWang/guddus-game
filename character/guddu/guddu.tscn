@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1xdlcutpppqr"]
+[gd_scene load_steps=7 format=3 uid="uid://d1xdlcutpppqr"]
 
 [ext_resource type="Script" path="res://character/guddu/guddu.gd" id="1_3d4tn"]
 [ext_resource type="Texture2D" uid="uid://csspsayiuiq7u" path="res://character/guddu/guddu.png" id="2_fyi7x"]
-[ext_resource type="PackedScene" uid="uid://cvnwrjn6md04p" path="res://character/shared/input_recorder.tscn" id="3_pqst2"]
+[ext_resource type="PackedScene" uid="uid://cvnwrjn6md04p" path="res://character/guddu/input_recorder.tscn" id="3_xe8nx"]
 [ext_resource type="PackedScene" uid="uid://ek2w1c4jyxuj" path="res://gun/gun.tscn" id="4_4wex7"]
+[ext_resource type="Script" path="res://character/guddu/input_recorder.gd" id="4_58j3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a1usl"]
 radius = 16.0
 
 [node name="Guddu" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_3d4tn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,6 +20,7 @@ texture = ExtResource("2_fyi7x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a1usl")
 
-[node name="InputRecorder" parent="." instance=ExtResource("3_pqst2")]
+[node name="InputRecorder" parent="." instance=ExtResource("3_xe8nx")]
+script = ExtResource("4_58j3m")
 
 [node name="Gun" parent="." instance=ExtResource("4_4wex7")]
