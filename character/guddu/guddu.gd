@@ -2,11 +2,12 @@ class_name Guddu
 extends CharacterBody2D
 
 signal hit
+signal fired
 
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 
 @export var max_speed := 200
-@export var team := Team.PLAYER
+var team := Team.PLAYER
 
 @onready var cooldown_timer := $CooldownTimer
 
@@ -32,6 +33,7 @@ func fire_bullet():
 	var direction = (mouse_position - global_position).normalized()
 	var bullet = Bullet.create(global_position, direction, team)
 	get_tree().get_root().add_child(bullet)
+	fired.emit()
 
 
 func on_hit():

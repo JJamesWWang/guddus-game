@@ -20,19 +20,19 @@ texture = ExtResource("1_llbyc")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-330, 0)
+position = Vector2(-170, 0)
 shape = SubResource("RectangleShape2D_kthu6")
 
 [node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(330, 0)
+position = Vector2(170, 0)
 shape = SubResource("RectangleShape2D_kthu6")
 
 [node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -250)
+position = Vector2(0, -130)
 shape = SubResource("RectangleShape2D_aoyyh")
 
 [node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 250)
+position = Vector2(0, 130)
 shape = SubResource("RectangleShape2D_aoyyh")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
