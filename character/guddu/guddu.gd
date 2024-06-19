@@ -1,9 +1,14 @@
+class_name Guddu
 extends CharacterBody2D
+
+signal hit
 
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 
-@export var max_speed = 200
-@export var team = Team.PLAYER
+@export var max_speed := 200
+@export var team := Team.PLAYER
+
+@onready var cooldown_timer := $CooldownTimer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,8 +22,9 @@ func _physics_process(_delta):
 	var movement_vector = InputBitmap.get_movement_vector(input_bitmap)
 	velocity = movement_vector.normalized() * max_speed
 	move_and_slide()
-	if InputBitmap.is_fire(input_bitmap):
+	if InputBitmap.is_fire(input_bitmap) and cooldown_timer.get_time_left() <= 0:
 		fire_bullet()
+		cooldown_timer.start()
 
 
 func fire_bullet():
@@ -26,3 +32,8 @@ func fire_bullet():
 	var direction = (mouse_position - global_position).normalized()
 	var bullet = Bullet.create(global_position, direction, team)
 	get_tree().get_root().add_child(bullet)
+
+
+func on_hit():
+	hit.emit()
+	queue_free()

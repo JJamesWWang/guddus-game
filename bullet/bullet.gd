@@ -18,7 +18,7 @@ static func create(in_position: Vector2, direction: Vector2, in_team: int):
 	elif in_team == Team.ENEMY:
 		bullet = CloneBulletScene.instantiate()
 	else:
-		print("Invalid team")
+		push_warning("Tried to create bullet with invalid team:", in_team)
 		return null
 
 	bullet.position = in_position
@@ -27,4 +27,9 @@ static func create(in_position: Vector2, direction: Vector2, in_team: int):
 
 
 func _physics_process(delta):
-	move_and_collide(velocity * delta)
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision:
+		var collider = collision.get_collider()
+		if collider.has_method("on_hit"):
+			collider.on_hit()
+		queue_free()

@@ -8,8 +8,8 @@
 
 [node name="Map" parent="." instance=ExtResource("1_06pht")]
 
-[node name="Clone" parent="." instance=ExtResource("2_ic513")]
-position = Vector2(480, 240)
-
 [node name="Guddu" parent="." instance=ExtResource("3_wxp2y")]
 position = Vector2(160, 240)
+
+[node name="Clone" parent="." instance=ExtResource("2_ic513")]
+position = Vector2(459, 249)
