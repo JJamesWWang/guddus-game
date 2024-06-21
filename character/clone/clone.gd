@@ -1,10 +1,12 @@
 class_name Clone
 extends CharacterBody2D
 
+signal hit
+
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 const CloneScene = preload("res://character/clone/clone.tscn")
 
-@export var max_speed = 200
+@export var max_speed = 900
 
 var team = Team.ENEMY
 
@@ -18,7 +20,6 @@ var fire_index = 0
 
 static func create(history, in_position):
 	var clone = CloneScene.instantiate()
-	print(history)
 	clone.recorded_input = history["input"]
 	clone.recorded_fire_coordinates = history["fire_coordinates"]
 	clone.position = in_position
@@ -34,7 +35,7 @@ func _physics_process(_delta):
 		var movement_vector = InputBitmap.get_movement_vector(bitmap)
 
 		movement_vector.x *= -1 * index_direction
-		movement_vector.y *= index_direction
+		movement_vector.y *= -1 * index_direction
 
 		velocity = movement_vector.normalized() * max_speed
 		move_and_slide()
@@ -60,4 +61,5 @@ func fire_bullet():
 
 
 func on_hit():
+	hit.emit()
 	queue_free()

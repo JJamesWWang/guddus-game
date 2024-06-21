@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ek2w1c4jyxuj" path="res://gun/gun.tscn" id="4_4wex7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a1usl"]
-radius = 16.0
+radius = 72.0
 
 [node name="Guddu" type="CharacterBody2D"]
 collision_layer = 2
@@ -13,6 +13,7 @@ collision_mask = 9
 script = ExtResource("1_3d4tn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_fyi7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

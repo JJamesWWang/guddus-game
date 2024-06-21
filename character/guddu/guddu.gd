@@ -3,18 +3,19 @@ extends CharacterBody2D
 
 signal hit
 
+const GudduScene = preload("res://character/guddu/guddu.tscn")
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 
-@export var max_speed := 200
+@export var max_speed := 900
 var team := Team.PLAYER
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass  # Replace with function body.
+static func create(in_position):
+	var guddu = GudduScene.instantiate()
+	guddu.global_position = in_position
+	return guddu
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	var input_bitmap = InputBitmap.get_input_bitmap()
 	var movement_vector = InputBitmap.get_movement_vector(input_bitmap)

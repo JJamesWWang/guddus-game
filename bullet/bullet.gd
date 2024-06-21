@@ -4,7 +4,7 @@ extends CharacterBody2D
 const PlayerBulletScene = preload("res://bullet/player_bullet.tscn")
 const CloneBulletScene = preload("res://bullet/clone_bullet.tscn")
 
-@export var speed := 400
+@export var speed := 1800
 
 var team: int
 

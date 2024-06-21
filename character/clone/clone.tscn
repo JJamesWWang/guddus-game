@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://character/clone/clone.gd" id="1_bqeo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tt8hw"]
-radius = 16.0
+radius = 72.0
 
 [node name="Clone" type="CharacterBody2D" groups=["clone"]]
 collision_layer = 4
@@ -12,6 +12,7 @@ collision_mask = 9
 script = ExtResource("1_bqeo6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("1_5omhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

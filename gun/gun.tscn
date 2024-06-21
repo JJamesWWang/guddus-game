@@ -7,5 +7,6 @@
 script = ExtResource("1_mkaa1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("1_trlsr")
 offset = Vector2(10, 0)
