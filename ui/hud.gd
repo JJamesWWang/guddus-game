@@ -1,11 +1,16 @@
 extends Control
 
+signal restart_button_pressed
+
+var game: Game
+
 @onready var score_label = $ScoreLabel
 @onready var round_status_label = $RoundStatusLabel
+@onready var restart_button = $RestartButton
 
 
 func _ready():
-	var game: Game = get_parent()
+	game = get_parent()
 	if not game is Game:
 		push_error("HUD must be a child of Game")
 		return
@@ -32,10 +37,20 @@ func _on_round_ended(for_seconds: int):
 		await get_tree().create_timer(1).timeout
 
 
-func _on_game_over(score: int):
+func _on_game_over():
 	round_status_label.set_visible(true)
-	round_status_label.set_text("Game over! Your final score is %s" % score)
+	round_status_label.set_text("Game over!")
+	restart_button.set_visible(true)
 
 
 func _on_score_updated(score: int):
 	score_label.set_text("Score: %s" % score)
+
+
+func _on_restart_button_pressed():
+	game.game_restarting.emit()
+	var seconds_until_restart = 3
+	for i in range(seconds_until_restart):
+		round_status_label.set_text("Restarting in %s..." % (seconds_until_restart - i))
+		await get_tree().create_timer(1).timeout
+	get_tree().reload_current_scene()

@@ -1,14 +1,14 @@
 class_name Bullet
 extends CharacterBody2D
 
-const PlayerBulletScene = preload("res://bullet/player_bullet.tscn")
-const CloneBulletScene = preload("res://bullet/clone_bullet.tscn")
-
 @export var speed := 1800
 
 var team: int
 
 @onready var sprite := $Sprite2D
+
+static var PlayerBulletScene = load("res://bullet/player_bullet.tscn")
+static var CloneBulletScene = load("res://bullet/clone_bullet.tscn")
 
 
 static func create(in_position: Vector2, direction: Vector2, in_team: int):

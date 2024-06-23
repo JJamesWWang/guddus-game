@@ -9,13 +9,9 @@
 script = ExtResource("1_ks10s")
 
 [node name="Map" parent="." instance=ExtResource("2_2dxsd")]
-position = Vector2(980, 540)
+position = Vector2(960, 540)
 
 [node name="InputRecorder" parent="." instance=ExtResource("5_sao54")]
-
-[node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [node name="CloneSpawnPoint" type="Node2D" parent="."]
 position = Vector2(1400, 540)

@@ -12,7 +12,7 @@ size = Vector2(1440, 20)
 size = Vector2(4.5, 1080)
 
 [node name="Map" type="Node2D"]
-position = Vector2(160, 120)
+position = Vector2(980, 540)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4.5, 4.5)

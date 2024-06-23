@@ -8,6 +8,9 @@ const InputBitmap = preload("res://utils/input_bitmap.gd")
 
 @export var max_speed := 900
 var team := Team.PLAYER
+var movement_enabled := true
+
+@onready var cooldown_timer = $CooldownTimer
 
 
 static func create(in_position):
@@ -17,6 +20,8 @@ static func create(in_position):
 
 
 func _physics_process(_delta):
+	if not movement_enabled:
+		return
 	var input_bitmap = InputBitmap.get_input_bitmap()
 	var movement_vector = InputBitmap.get_movement_vector(input_bitmap)
 	velocity = movement_vector.normalized() * max_speed
@@ -26,10 +31,12 @@ func _physics_process(_delta):
 
 
 func fire_bullet():
-	var mouse_position = get_viewport().get_mouse_position()
-	var direction = (mouse_position - global_position).normalized()
-	var bullet = Bullet.create(global_position, direction, team)
-	get_tree().get_root().add_child(bullet)
+	if cooldown_timer.is_stopped():
+		var mouse_position = get_viewport().get_mouse_position()
+		var direction = (mouse_position - global_position).normalized()
+		var bullet = Bullet.create(global_position, direction, team)
+		get_tree().get_root().add_child(bullet)
+		cooldown_timer.start()
 
 
 func on_hit():
