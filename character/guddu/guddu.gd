@@ -3,14 +3,16 @@ extends CharacterBody2D
 
 signal hit
 
-const GudduScene = preload("res://character/guddu/guddu.tscn")
 const InputBitmap = preload("res://utils/input_bitmap.gd")
 
 @export var max_speed := 900
+
 var team := Team.PLAYER
 var movement_enabled := true
 
 @onready var cooldown_timer = $CooldownTimer
+
+static var GudduScene = load("res://character/guddu/guddu.tscn")
 
 
 static func create(in_position):

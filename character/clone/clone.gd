@@ -4,7 +4,6 @@ extends CharacterBody2D
 signal hit
 
 const InputBitmap = preload("res://utils/input_bitmap.gd")
-const CloneScene = preload("res://character/clone/clone.tscn")
 
 @export var max_speed = 900
 
@@ -18,6 +17,8 @@ var recorded_fire_coordinates = []
 var fire_index = 0
 
 @onready var cooldown_timer = $CooldownTimer
+
+static var CloneScene = load("res://character/clone/clone.tscn")
 
 
 static func create(history, in_position):
